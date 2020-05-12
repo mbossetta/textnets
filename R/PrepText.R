@@ -44,7 +44,7 @@ PrepText <- function(textdata, groupvar, textvar, node_type = c("groups","words"
     
     textdata_tokens <- as_tibble(textdata) %>%
       select(groupvar, textvar) %>%
-      unnest_tokens_(output = "word", input = textvar, token = tokenizer, ...)
+      unnest_tokens(output = "word", input = textvar, token = tokenizer, ...)
     
     # get part of speech with udpipe
     # annotate for pos only w/ pre-tokenized data
@@ -64,7 +64,7 @@ PrepText <- function(textdata, groupvar, textvar, node_type = c("groups","words"
     # we use tidytext to flexibly tokenize words or tweets
     textdata_tokens <- as_tibble(textdata) %>%
       select(groupvar, textvar) %>%
-      unnest_tokens_(output = "word", input = textvar, token = tokenizer, strip_punct = FALSE, ...)
+      unnest_tokens(output = "word", input = textvar, token = tokenizer, strip_punct = FALSE, ...)
     
     # then we prepare the tokenized documents for dependency parsing
     textdata_tokens <- textdata_tokens %>% 
